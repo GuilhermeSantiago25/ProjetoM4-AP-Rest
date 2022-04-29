@@ -56,6 +56,23 @@ export async function putAlunos(req, res) {
         });
 }
 
+export async function patchAlunos(req, res) {
+    const alunoDao = new AlunoDAO(db);
+    const body = req.body;
+    const {id_aluno} = req.params;
+
+    const patchAluno = new AlunoModel(body.nome_completo, body.email, body.bairro, body.tipo_habilitacao);
+    
+    alunoDao
+        .updateAlunos(patchAluno, id_aluno)
+        .then((result) => {
+            res.status(200).json(result)
+        })
+        .catch((error) => {
+            res.status(400).json(error)
+        });
+}
+
 export async function deleteAluno(req, res) {
     const alunoDao = new AlunoDAO(db);
     const {id_aluno} = req.params;

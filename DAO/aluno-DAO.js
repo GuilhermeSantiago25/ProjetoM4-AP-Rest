@@ -21,9 +21,8 @@ class AlunoDAO {
     async selectAlunosId(id_aluno) {
         return await new Promise((resolve, reject) => {
             const query = ('SELECT * FROM Alunos WHERE id_aluno =?');
-            this._db.get(query,
-                [id_aluno], 
-                (err, rows) => {
+            const data = [id_aluno];
+            this._db.get(query,data, (err, rows) => {
                     if (err) {
                        return reject(err);
                     } else {
@@ -37,10 +36,8 @@ class AlunoDAO {
     async insertAlunos(alunos) {
         return await new Promise((resolve, reject) => {
             const query = ('INSERT INTO Alunos (nome_completo,email,bairro,tipo_habilitacao) VALUES (?,?,?,?)');
-            
-            this._db.run(query,
-                [alunos.nome_completo, alunos.email, alunos.bairro, alunos.tipo_habilitacao], 
-                (err, rows) => {
+            const data = [alunos.nome_completo, alunos.email, alunos.bairro, alunos.tipo_habilitacao];
+            this._db.run(query, data, (err, rows) => {
                     if (err) {
                        return reject(err);
                     } else {
@@ -54,10 +51,8 @@ class AlunoDAO {
     async updateAlunos(alunos,id_aluno) {
         return await new Promise((resolve, reject) => {
             const query = ('UPDATE Alunos SET nome_completo=?, email=?, bairro=?,tipo_habilitacao=? WHERE id_aluno=?')
-            
-            this._db.run(query,
-                [alunos.nome_completo, alunos.email, alunos.bairro, alunos.tipo_habilitacao, id_aluno], 
-                (err, rows) => {
+            const data = [alunos.nome_completo, alunos.email, alunos.bairro, alunos.tipo_habilitacao, id_aluno];
+            this._db.run(query,data,(err, rows) => {
                     if (err) {
                        return reject(err);
                     } else {
@@ -70,9 +65,8 @@ class AlunoDAO {
     async deleteAlunos(id_aluno) {
        return await new Promise((resolve, reject) => {
             const query = ('DELETE FROM Alunos WHERE id_aluno=?');
-            this._db.run(query,
-                [id_aluno], 
-                (err, rows) => {
+            const data = [id_aluno];
+            this._db.run(query,data, (err, rows) => {
                     if (err) {
                        return reject(err);
                     } else {
