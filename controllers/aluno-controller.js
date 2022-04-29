@@ -1,7 +1,7 @@
 import AlunoDAO from "../DAO/aluno-DAO.js";
 import AlunoModel from "../models/aluno-model.js";
 import db from "../infra/configDb.js";
-import Validator from "fastest-validator";
+
 
 export async function selectAllAlunos(req, res) {
     const alunoDao = new AlunoDAO(db);
@@ -32,18 +32,17 @@ export async function insertAluno(req, res) {
     const alunoDao = new AlunoDAO(db);
     const body = req.body;
     const newAluno = new AlunoModel(body.nome_completo, body.email, body.bairro, body.tipo_habilitacao);
-    
-    const schema = {
-        nome_completo: {type: 'string', optional: false, max: "200"},
-        email: {type: 'string', optional: false, max: "100"},
-        bairro: {type: 'string', optional: false,max: "100"},
-        tipo_habilitacao: {type: 'string', optional: false, max: "50"}
+
+    const validationResponse = AlunoModel.validate(body);
+
+    if (!validationResponse) {
+        return res.status(400).json({
+            message: 'Validation failed',
+            errors: validationResponse
+        });
     }
 
-    const v = new Validator();
-    const validationResponse = v.validate(newAluno, schema);
-    
-    if (!validationResponse){
+    if (!validationResponse) {
         return res.status(400).json({
             message: 'Validation failed',
             errors: validationResponse
@@ -57,33 +56,25 @@ export async function insertAluno(req, res) {
         .catch((err) => {
             res.status(400).json(err)
         });
-
-
-    }
+}
 
 export async function putAlunos(req, res) {
     const alunoDao = new AlunoDAO(db);
     const body = req.body;
-    const {id_aluno} = req.params;
+    const {
+        id_aluno
+    } = req.params;
     const putAluno = new AlunoModel(body.nome_completo, body.email, body.bairro, body.tipo_habilitacao);
 
-    const schema = {
-        nome_completo: {type: 'string', optional: false, max: "200"},
-        email: {type: 'string', optional: false, max: "100"},
-        bairro: {type: 'string', optional: false,max: "100"},
-        tipo_habilitacao: {type: 'string', optional: false, max: "50"}
-    }
+    const validationResponse = AlunoModel.validate(body);
 
-    const v = new Validator();
-    const validationResponse = v.validate(putAluno, schema);
-    
-    if (!validationResponse){
+    if (!validationResponse) {
         return res.status(400).json({
             message: 'Validation failed',
             errors: validationResponse
         });
     }
-    
+
     alunoDao
         .updateAlunos(putAluno, id_aluno)
         .then((result) => {
@@ -97,26 +88,27 @@ export async function putAlunos(req, res) {
 export async function patchAlunos(req, res) {
     const alunoDao = new AlunoDAO(db);
     const body = req.body;
-    const {id_aluno} = req.params;
+    const {
+        id_aluno
+    } = req.params;
     const patchAluno = new AlunoModel(body.nome_completo, body.email, body.bairro, body.tipo_habilitacao);
-    
-    const schema = {
-        nome_completo: {type: 'string', optional: false, max: "200"},
-        email: {type: 'string', optional: false, max: "100"},
-        bairro: {type: 'string', optional: false,max: "100"},
-        tipo_habilitacao: {type: 'string', optional: false, max: "50"}
-    }
 
-    const v = new Validator();
-    const validationResponse = v.validate(patchAluno, schema);
-    
-    if (!validationResponse){
+    const validationResponse = AlunoModel.validate(body);
+
+    if (!validationResponse) {
         return res.status(400).json({
             message: 'Validation failed',
             errors: validationResponse
         });
     }
-    
+
+    if (!validationResponse) {
+        return res.status(400).json({
+            message: 'Validation failed',
+            errors: validationResponse
+        });
+    }
+
     alunoDao
         .updateAlunos(patchAluno, id_aluno)
         .then((result) => {
@@ -129,13 +121,15 @@ export async function patchAlunos(req, res) {
 
 export async function deleteAluno(req, res) {
     const alunoDao = new AlunoDAO(db);
-    const {id_aluno} = req.params;
+    const {
+        id_aluno
+    } = req.params;
 
     alunoDao.deleteAlunos(id_aluno)
-    .then((result)=>{
-        res.status(200).json(result);
-    })
-    .catch((error) => {
-        res.status(400).json(error);
-    });
+        .then((result) => {
+            res.status(200).json(result);
+        })
+        .catch((error) => {
+            res.status(400).json(error);
+        });
 }
