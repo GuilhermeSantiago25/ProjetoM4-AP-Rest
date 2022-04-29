@@ -33,7 +33,7 @@ export async function insertAluno(req, res) {
     const body = req.body;
     const newAluno = new AlunoModel(body.nome_completo, body.email, body.bairro, body.tipo_habilitacao);
 
-    const validationResponse = AlunoModel.validate(body);
+    const validationResponse = AlunoModel.validation(body);
 
     if (!validationResponse) {
         return res.status(400).json({
@@ -66,7 +66,7 @@ export async function putAlunos(req, res) {
     } = req.params;
     const putAluno = new AlunoModel(body.nome_completo, body.email, body.bairro, body.tipo_habilitacao);
 
-    const validationResponse = AlunoModel.validate(body);
+    const validationResponse = AlunoModel.validation(body);
 
     if (!validationResponse) {
         return res.status(400).json({
@@ -93,16 +93,9 @@ export async function patchAlunos(req, res) {
     } = req.params;
     const patchAluno = new AlunoModel(body.nome_completo, body.email, body.bairro, body.tipo_habilitacao);
 
-    const validationResponse = AlunoModel.validate(body);
+    const validationResponse = AlunoModel.validation(body);
 
-    if (!validationResponse) {
-        return res.status(400).json({
-            message: 'Validation failed',
-            errors: validationResponse
-        });
-    }
-
-    if (!validationResponse) {
+    if (!validationResponse !== true) {
         return res.status(400).json({
             message: 'Validation failed',
             errors: validationResponse

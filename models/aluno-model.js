@@ -8,7 +8,8 @@ class Aluno {
         this.tipo_habilitacao = tipo_habilitacao;
     }
     
-    static validate(body){
+    static validation(body){
+        
         const schema = {
             nome_completo: {type: 'string', optional: false, max: "200"},
             email: {type: 'string', optional: false, max: "100"},
@@ -16,10 +17,12 @@ class Aluno {
             tipo_habilitacao: {type: 'string', optional: false, max: "50"}
         }
     
+        
         const v = new Validator();
 
-        return Validator.validate(body, schema);
+        return v.validate(body, schema);
     }   
+    
 }
 
 export default Aluno;
