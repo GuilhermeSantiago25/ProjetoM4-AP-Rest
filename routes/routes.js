@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import { selectAllAlunos, selectIdAlunos, insertAluno, putAlunos, patchAlunos, deleteAluno } from '../controllers/aluno-controller.js';
 
+
 const router = Router();
 
 router.get('/', (req,res)=>{

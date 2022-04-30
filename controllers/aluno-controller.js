@@ -2,7 +2,6 @@ import AlunoDAO from "../DAO/aluno-DAO.js";
 import AlunoModel from "../models/aluno-model.js";
 import db from "../infra/configDb.js";
 
-
 export async function selectAllAlunos(req, res) {
     const alunoDao = new AlunoDAO(db);
     alunoDao.selectAlunos()
@@ -34,13 +33,6 @@ export async function insertAluno(req, res) {
     const newAluno = new AlunoModel(body.nome_completo, body.email, body.bairro, body.tipo_habilitacao);
 
     const validationResponse = AlunoModel.validation(body);
-
-    if (!validationResponse) {
-        return res.status(400).json({
-            message: 'Validation failed',
-            errors: validationResponse
-        });
-    }
 
     if (!validationResponse) {
         return res.status(400).json({
