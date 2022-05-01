@@ -1,23 +1,23 @@
 import sqlite3 from "sqlite3";
-const db = new sqlite3.Database('./database.db');
+const db = new sqlite3.Database('.infra/database.db');
 
 const FUNCIONARIOS_SCHEMA = `CREATE TABLE IF NOT EXISTS funcionarios (
             id_funcionario INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-            nome_completo VARCHAR(120) NOT NULL,
-            email VARCHAR(60) NOT NULL,
-            celular INTEGER NOT NULL,
-            cargo VARCHAR(60) NOT NULL,
-            bairro VARCHAR(60) NOT NULL,
-            Periodo VARCHAR (60) NOT NULL
-            admissão VARCHAR(20) NOT NULL
+            Nomecompleto VARCHAR(120) NOT NULL,
+            Email VARCHAR(80) NOT NULL,
+            Celular INT(15) NOT NULL,
+            Cargo VARCHAR(45) NOT NULL,
+            Bairro VARCHAR(45) NOT NULL,
+            Periodo VARCHAR(45) NOT NULL,
+            Admissão DATE NOT NULL
             );`;
 
-function criaTabelaAl() {
+function criaTabelaFunc() {
     db.run(FUNCIONARIOS_SCHEMA, (error) => {
         if (error) console.log("Erro ao criar tabela de funcionarios");
     });
 }
 
 db.serialize(()=>{
-    criaTabelaAl();
+    criaTabelaFunc();
 });

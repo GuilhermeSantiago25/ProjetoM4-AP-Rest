@@ -5,7 +5,7 @@ import db from "../infra/configDb.js";
 
 export async function selectAllFuncionario(req, res) {
     const funcionarioDao = new FuncionarioDAO(db);
-    funcionarioDao.selectFuncionario()
+    funcionarioDao.selectFuncionarios()
         .then((result) => {
             res.status(200).json(result);
         })

@@ -6,7 +6,7 @@ class AlunoDAO {
 
     async selectAlunos() {
         return await new Promise((resolve, reject) => {
-            const query = (`SELECT * FROM Alunos`);
+            const query = ('SELECT * FROM Alunos');
             this._db.all(query, 
                 (err, rows) => {
                 if (err) {
