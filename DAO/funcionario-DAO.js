@@ -20,7 +20,7 @@ class FuncionarioDAO {
 
     async selectFuncionariosId(id_funcionario) {
         return await new Promise((resolve, reject) => {
-            const query = ('SELECT * FROM funcionarios WHERE id_funcionarios =?');
+            const query = ('SELECT * FROM funcionarios WHERE id_funcionario =?');
             const data = [id_funcionario];
             this._db.get(query,data, (err, rows) => {
                     if (err) {
@@ -35,7 +35,7 @@ class FuncionarioDAO {
 
     async insertFuncionarios(funcionarios) {
         return await new Promise((resolve, reject) => {
-            const query = ('INSERT INTO Funcionarios (nome_completo,email, celular, cargo, bairro, periodo, admissão) VALUES (?,?,?,?)');
+            const query = ('INSERT INTO Funcionarios (nome_completo,email, celular, cargo, bairro, periodo, admissão) VALUES (?,?,?,?,?,?,?)');
             const data = [funcionarios.id_funcionario, funcionarios.email, funcionarios.celular, funcionarios.cargo, funcionarios.bairro, funcionarios.periodo, funcionarios.admissao];
             this._db.run(query, data, (err, rows) => {
                     if (err) {

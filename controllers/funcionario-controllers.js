@@ -1,11 +1,11 @@
-import AlunoDAO from "../DAO/aluno-DAO.js";
-import AlunoModel from "../models/aluno-model.js";
+import FuncionarioDAO from "../DAO/funcionario-DAO.js";
+import FuncionarioModel from "../models/aluno-model.js";
 import db from "../infra/configDb.js";
 
 
-export async function selectAllAlunos(req, res) {
-    const alunoDao = new AlunoDAO(db);
-    alunoDao.selectAlunos()
+export async function selectAllFuncionario(req, res) {
+    const funcionarioDao = new FuncionarioDAO(db);
+    funcionarioDao.selectFuncionario()
         .then((result) => {
             res.status(200).json(result);
         })
@@ -14,12 +14,12 @@ export async function selectAllAlunos(req, res) {
         });
 }
 
-export async function selectIdAlunos(req, res) {
-    const alunoDao = new AlunoDAO(db);
+export async function selectIdFuncionario(req, res) {
+    const funcionarioDao = new FuncionarioDAO(db);
     const {
-        id_aluno
+        id_funcionario
     } = req.params;
-    alunoDao.selectAlunosId(id_aluno)
+    funcionarioDao.selectFuncionarioId(id_funcionario)
         .then((result) => {
             res.status(200).json(result);
         })
@@ -28,19 +28,12 @@ export async function selectIdAlunos(req, res) {
         });
 }
 
-export async function insertAluno(req, res) {
-    const alunoDao = new AlunoDAO(db);
+export async function insertFuncionarios(req, res) {
+    const funcionarioDao = new FuncionarioDAO(db);
     const body = req.body;
-    const newAluno = new AlunoModel(body.nome_completo, body.email, body.bairro, body.tipo_habilitacao);
+    const newFuncionario = new FuncionarioModel(body.nome_completo, body.email, body.celular, body.cargo, body.bairro, body.periodo, body.admissao);
 
-    const validationResponse = AlunoModel.validation(body);
-
-    if (!validationResponse) {
-        return res.status(400).json({
-            message: 'Validation failed',
-            errors: validationResponse
-        });
-    }
+    const validationResponse = FuncionarioModel.validation(body);
 
     if (!validationResponse) {
         return res.status(400).json({
@@ -49,7 +42,14 @@ export async function insertAluno(req, res) {
         });
     }
 
-    alunoDao.insertAlunos(newAluno)
+    if (!validationResponse) {
+        return res.status(400).json({
+            message: 'Validation failed',
+            errors: validationResponse
+        });
+    }
+
+    funcionarioDao.insertFuncionarios(newFuncionario)
         .then((result) => {
             res.status(201).json(result)
         })
@@ -58,15 +58,15 @@ export async function insertAluno(req, res) {
         });
 }
 
-export async function putAlunos(req, res) {
-    const alunoDao = new AlunoDAO(db);
+export async function putFuncionario(req, res) {
+    const funcionarioDao = new FuncionarioDAO(db);
     const body = req.body;
     const {
-        id_aluno
+        id_funcionario
     } = req.params;
-    const putAluno = new AlunoModel(body.nome_completo, body.email, body.bairro, body.tipo_habilitacao);
+    const putFuncionario = new FuncionarioModel(body.nome_completo, body.email, body.celular, body.cargo, body.bairro, body.periodo, body.admissao);
 
-    const validationResponse = AlunoModel.validation(body);
+    const validationResponse = FuncionarioModel.validation(body);
 
     if (!validationResponse) {
         return res.status(400).json({
@@ -75,8 +75,8 @@ export async function putAlunos(req, res) {
         });
     }
 
-    alunoDao
-        .updateAlunos(putAluno, id_aluno)
+    funcionarioDao
+        .updateFuncionarios(putFuncionario, id_funcionario)
         .then((result) => {
             res.status(200).json(result)
         })
@@ -85,15 +85,15 @@ export async function putAlunos(req, res) {
         });
 }
 
-export async function patchAlunos(req, res) {
-    const alunoDao = new AlunoDAO(db);
+export async function patchFuncionario(req, res) {
+    const funcionarioDao = new FuncionarioDAO(db);
     const body = req.body;
     const {
-        id_aluno
+        id_funcionario
     } = req.params;
-    const patchAluno = new AlunoModel(body.nome_completo, body.email, body.bairro, body.tipo_habilitacao);
+    const patchFuncionario = new FuncionarioModel(body.nome_completo, body.email, body.bairro, body.tipo_habilitacao);
 
-    const validationResponse = AlunoModel.validation(body);
+    const validationResponse = FuncionarioModel.validation(body);
 
     if (!validationResponse !== true) {
         return res.status(400).json({
@@ -102,8 +102,8 @@ export async function patchAlunos(req, res) {
         });
     }
 
-    alunoDao
-        .updateAlunos(patchAluno, id_aluno)
+    funcionarioDao
+        .updateAlunos(patchFuncionario, id_funcionario)
         .then((result) => {
             res.status(200).json(result)
         })
@@ -112,13 +112,13 @@ export async function patchAlunos(req, res) {
         });
 }
 
-export async function deleteAluno(req, res) {
-    const alunoDao = new AlunoDAO(db);
+export async function deleteFuncionario(req, res) {
+    const funcionarioDao = new FuncionarioDAO(db);
     const {
-        id_aluno
+        id_funcionario
     } = req.params;
 
-    alunoDao.deleteAlunos(id_aluno)
+    funcionarioDao.deleteFuncionario(id_funcionario)
         .then((result) => {
             res.status(200).json(result);
         })

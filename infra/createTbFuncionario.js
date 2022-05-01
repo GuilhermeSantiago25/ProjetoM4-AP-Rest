@@ -5,7 +5,7 @@ const FUNCIONARIOS_SCHEMA = `CREATE TABLE IF NOT EXISTS funcionarios (
             id_funcionario INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
             nome_completo VARCHAR(120) NOT NULL,
             email VARCHAR(60) NOT NULL,
-            celular VARCHAR(20) NOT NULL,
+            celular INTEGER NOT NULL,
             cargo VARCHAR(60) NOT NULL,
             bairro VARCHAR(60) NOT NULL,
             Periodo VARCHAR (60) NOT NULL
