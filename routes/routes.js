@@ -18,8 +18,12 @@ router.put('/alunos/:id_aluno',putAlunos);
 router.patch('/alunos/:id_aluno',patchAlunos);
 router.delete('/alunos/:id_aluno', deleteAluno);
 
-
-
+router.get('/funcionarios', selectAllFuncionario);
+router.get('/funcionarios/:id_funcionario', selectIdFuncionario);
+router.post('/funcionarios', insertFuncionarios);
+router.put('/funcionarios/:id_funcionario',putFuncionario);
+router.patch('/funcionarios/:id_funcionario',patchFuncionario);
+router.delete('/funcionarios/:id_funcionario', deleteFuncionario);
 
 
 export default router;
