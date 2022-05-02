@@ -1,12 +1,12 @@
-class AlunoDAO {
+class FuncionarioDAO {
     
     constructor(db) {
         this._db = db;
     }
 
-    async selectAlunos() {
+    async selectFuncionarios() {
         return await new Promise((resolve, reject) => {
-            const query = ('SELECT * FROM Alunos');
+            const query = (`SELECT * FROM funcionarios`);
             this._db.all(query, 
                 (err, rows) => {
                 if (err) {
@@ -18,10 +18,10 @@ class AlunoDAO {
         });
     }
 
-    async selectAlunosId(id_aluno) {
+    async selectFuncionariosId(id_funcionario) {
         return await new Promise((resolve, reject) => {
-            const query = ('SELECT * FROM Alunos WHERE id_aluno =?');
-            const data = [id_aluno];
+            const query = ('SELECT * FROM funcionarios WHERE id_funcionario =?');
+            const data = [id_funcionario];
             this._db.get(query,data, (err, rows) => {
                     if (err) {
                        return reject(err);
@@ -33,10 +33,10 @@ class AlunoDAO {
     };
 
 
-    async insertAlunos(alunos) {
+    async insertFuncionarios(funcionarios) {
         return await new Promise((resolve, reject) => {
-            const query = ('INSERT INTO Alunos (nome_completo,email,bairro,tipo_habilitacao) VALUES (?,?,?,?)');
-            const data = [alunos.nome_completo, alunos.email, alunos.bairro, alunos.tipo_habilitacao];
+            const query = ('INSERT INTO funcionarios (nome_completo,email,celular,cargo,bairro,periodo,admissao) VALUES (?,?,?,?,?,?,?)');
+            const data = [funcionarios.nome_completo, funcionarios.email, funcionarios.celular, funcionarios.cargo, funcionarios.bairro, funcionarios.periodo, funcionarios.admissao];
             this._db.run(query, data, (err, rows) => {
                     if (err) {
                        return reject(err);
@@ -45,13 +45,12 @@ class AlunoDAO {
                     }
                 });
         });
-
     };
 
-    async updateAlunos(alunos,id_aluno) {
+    async updateFuncionarios(funcionarios,id_funcionario) {
         return await new Promise((resolve, reject) => {
-            const query = ('UPDATE Alunos SET nome_completo=?, email=?, bairro=?,tipo_habilitacao=? WHERE id_aluno=?')
-            const data = [alunos.nome_completo, alunos.email, alunos.bairro, alunos.tipo_habilitacao, id_aluno];
+            const query = ('UPDATE funcionarios SET nome_completo=?, email=?, celular=?, cargo=?, bairro=?, periodo=?, admissao =? WHERE id_funcionario=?')
+            const data = [funcionarios.nome_completo, funcionarios.email, funcionarios.celular, funcionarios.cargo, funcionarios.bairro, funcionarios.periodo, funcionarios.admissao, id_funcionario];
             this._db.run(query,data,(err, rows) => {
                     if (err) {
                        return reject(err);
@@ -62,10 +61,10 @@ class AlunoDAO {
         });
     }
 
-    async deleteAlunos(id_aluno) {
+    async deleteFuncionarios(id_funcionario) {
        return await new Promise((resolve, reject) => {
-            const query = ('DELETE FROM Alunos WHERE id_aluno=?');
-            const data = [id_aluno];
+            const query = ('DELETE FROM funcionarios WHERE id_funcionario=?');
+            const data = [id_funcionario];
             this._db.run(query,data, (err, rows) => {
                     if (err) {
                        return reject(err);
@@ -79,4 +78,4 @@ class AlunoDAO {
     }
 }
 
-export default AlunoDAO;
+export default FuncionarioDAO;

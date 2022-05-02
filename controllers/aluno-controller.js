@@ -2,6 +2,7 @@ import AlunoDAO from "../DAO/aluno-DAO.js";
 import AlunoModel from "../models/aluno-model.js";
 import db from "../infra/configDb.js";
 
+
 export async function selectAllAlunos(req, res) {
     const alunoDao = new AlunoDAO(db);
     alunoDao.selectAlunos()
