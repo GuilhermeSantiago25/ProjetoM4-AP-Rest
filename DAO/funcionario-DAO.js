@@ -45,7 +45,6 @@ class FuncionarioDAO {
                     }
                 });
         });
-
     };
 
     async updateFuncionarios(funcionarios,id_funcionario) {

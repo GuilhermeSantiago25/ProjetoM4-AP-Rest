@@ -1,5 +1,5 @@
 import sqlite3 from "sqlite3";
-const db = new sqlite3.Database('.infra/database.db');
+const db = new sqlite3.Database('.infra\database.db')
 
 const FUNCIONARIOS_SCHEMA = `CREATE TABLE IF NOT EXISTS funcionarios (
             id_funcionario INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
