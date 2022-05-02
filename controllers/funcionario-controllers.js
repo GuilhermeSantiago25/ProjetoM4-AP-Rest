@@ -42,13 +42,6 @@ export async function insertFuncionarios(req, res) {
         });
     }
 
-    if (!validationResponse) {
-        return res.status(400).json({
-            message: 'Validation failed',
-            errors: validationResponse
-        });
-    }
-
     funcionarioDao.insertFuncionarios(newFuncionario)
         .then((result) => {
             res.status(201).json(result)

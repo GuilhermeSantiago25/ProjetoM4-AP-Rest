@@ -20,7 +20,7 @@ class Funcionario {
             cargo : {type: 'string', optional: false, max: "100"},
             bairro: {type: 'string', optional: false, max: "100"},
             periodo: {type: 'string', optional: false, max: "100"},
-            admissao: {type: 'timestamp', optional: false, max: "100"}            
+            admissao: {type: 'date', optional: false, max: "100"}            
         }
     
         

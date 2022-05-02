@@ -11,7 +11,7 @@ const ALUNOS_SCHEMA = `CREATE TABLE IF NOT EXISTS Alunos (
 
 function criaTabelaAl() {
     db.run(ALUNOS_SCHEMA, (error) => {
-        if (error) console.log("Erro ao criar tabela de alunos");
+        if (error) console.log("Erro ao criar tabela de Alunos");
     });
 }
 
@@ -30,20 +30,20 @@ if (error) console.log("Erro ao criar tabela do Financeiro");
 });
 }
 
-const FUNCIONARIOS_SCHEMA = `CREATE TABLE IF NOT EXISTS funcionarios (
+const FUNCIONARIOS_SCHEMA = `CREATE TABLE IF NOT EXISTS Funcionarios (
     id_funcionario INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-    Nomecompleto VARCHAR(120) NOT NULL,
-    Email VARCHAR(80) NOT NULL,
-    Celular INT(15) NOT NULL,
-    Cargo VARCHAR(45) NOT NULL,
-    Bairro VARCHAR(45) NOT NULL,
-    Periodo VARCHAR(45) NOT NULL,
-    Admissão DATE NOT NULL
+    nome_completo VARCHAR(120) NOT NULL,
+    email VARCHAR(80) NOT NULL,
+    celular INT(15) NOT NULL,
+    cargo VARCHAR(45) NOT NULL,
+    bairro VARCHAR(45) NOT NULL,
+    periodo VARCHAR(45) NOT NULL,
+    admissao DATE NOT NULL
     );`;
 
 function criaTabelaFunc() {
 db.run(FUNCIONARIOS_SCHEMA, (error) => {
-if (error) console.log("Erro ao criar tabela de funcionarios");
+if (error) console.log("Erro ao criar tabela de Funcionarios");
 });
 }
 

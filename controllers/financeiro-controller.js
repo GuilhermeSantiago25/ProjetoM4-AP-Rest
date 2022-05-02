@@ -18,7 +18,7 @@ export async function selectIdFinaneiro(req, res) {
     const {
         id_finceiro
     } = req.params;
-    FinanceiroDAO.selectIdFinaneiro(idfinceiro)
+    FinanceiroDAO.selectIdFinaneiro(id_finceiro)
         .then((result) => {
             res.status(200).json(result);
         })
@@ -41,7 +41,7 @@ export async function insertFinanceiro(req, res) {
         });
     }
 
-    financeiroDao.insertFinanceiro(newFinanceiro)
+    FinanceiroDAO.insertFinanceiro(newFinanceiro)
         .then((result) => {
             res.status(201).json(result)
         })
@@ -67,7 +67,7 @@ export async function putFinanceiro(req, res) {
         });
     }
 
-    financeiroDao
+    FinanceiroDAO
         .updateFinanceiro(putFinanceiro, id_financeiro)
         .then((result) => {
             res.status(200).json(result)
