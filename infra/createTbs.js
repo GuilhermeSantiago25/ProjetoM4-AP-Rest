@@ -14,7 +14,21 @@ function criaTabelaAl() {
         if (error) console.log("Erro ao criar tabela de alunos");
     });
 }
+const FINANCEIRO_SCHEMA = `CREATE TABLE IF NOT EXISTS Financeiro (
+    id_financceiro INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    descricao VARCHAR(120) NOT NULL,
+    entrada INTEGER(60) NOT NULL,
+    saida INTEGER(60) NOT NULL,
+    validacao INTEGER(60) NOT NULL
+    );`;
+
+function criaTabelaFin() {
+db.run(FINANCEIRO_SCHEMA, (error) => {
+if (error) console.log("Erro ao criar tabela do Financeiro");
+});
+}
 
 db.serialize(()=>{
     criaTabelaAl();
+    criaTabelaFin();
 });

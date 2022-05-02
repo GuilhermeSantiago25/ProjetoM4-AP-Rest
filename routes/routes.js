@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { selectAllAlunos, selectIdAlunos, insertAluno, putAlunos, patchAlunos, deleteAluno } from '../controllers/aluno-controller.js';
-import { selectAllFinanceiro, selectIdFinanceiro, insertFinanceiro, putFinanceiro, patchFinanceiro, deleteFinanceiro } from '../controllers/financeiro-controller.js';
+import { selectAllFinanceiro, selectIdFinaneiro, insertFinanceiro, putFinanceiro, patchFinanceiro, deleteFinanceiro } from '../controllers/financeiro-controller.js';
 
 
 const router = Router();
@@ -21,7 +21,7 @@ router.patch('/alunos/:id_aluno',patchAlunos);
 router.delete('/alunos/:id_aluno', deleteAluno);
 
 router.get('/financeiro', selectAllFinanceiro);
-router.get('/financeiro/:id_aluno', selectIdFinanceiro);
+router.get('/financeiro/:id_aluno', selectIdFinaneiro);
 router.post('/financeiro', insertFinanceiro);
 router.put('/financeiro/:id_aluno',putFinanceiro);
 router.patch('/financeiro/:id_aluno',patchFinanceiro);
