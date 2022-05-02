@@ -3,8 +3,8 @@ import FinanceiroModel from "../models/financeiro-model.js";
 import db from "../infra/configDb.js";
 
 export async function selectAllFinanceiro(req, res) {
-    const FinanceiroDAO = new FinanceiroDAO(db);
-    FinanceiroDAO.selectFinanceiro()
+    const financeiroDAO = new FinanceiroDAO(db);
+    financeiroDAO.selectFinanceiro()
         .then((result) => {
             res.status(200).json(result);
         })
@@ -14,11 +14,11 @@ export async function selectAllFinanceiro(req, res) {
 }
 
 export async function selectIdFinaneiro(req, res) {
-    const FinanceiroDAO = new FinanceiroDAO(db);
+    const financeiroDAO = new FinanceiroDAO(db);
     const {
         id_finceiro
     } = req.params;
-    FinanceiroDAO.selectIdFinaneiro(id_finceiro)
+    financeiroDAO.selectIdFinaneiro(id_finceiro)
         .then((result) => {
             res.status(200).json(result);
         })
@@ -28,7 +28,7 @@ export async function selectIdFinaneiro(req, res) {
 }
 
 export async function insertFinanceiro(req, res) {
-    const FinanceiroDAO = new FinanceiroDAO(db);
+    const financeiroDAO = new FinanceiroDAO(db);
     const body = req.body;
     const newFinanceiro = new FinanceiroModel(body.descricao, body.entrada, body.saida, body.validacao);
 
@@ -41,7 +41,7 @@ export async function insertFinanceiro(req, res) {
         });
     }
 
-    FinanceiroDAO.insertFinanceiro(newFinanceiro)
+    financeiroDAO.insertFinanceiro(newFinanceiro)
         .then((result) => {
             res.status(201).json(result)
         })
@@ -51,7 +51,7 @@ export async function insertFinanceiro(req, res) {
 }
 
 export async function putFinanceiro(req, res) {
-    const FinanceiroDAO = new FinanceiroDAO(db);
+    const financeiroDAO = new FinanceiroDAO(db);
     const body = req.body;
     const {
         id_financeiro
@@ -67,7 +67,7 @@ export async function putFinanceiro(req, res) {
         });
     }
 
-    FinanceiroDAO
+    financeiroDAO
         .updateFinanceiro(putFinanceiro, id_financeiro)
         .then((result) => {
             res.status(200).json(result)

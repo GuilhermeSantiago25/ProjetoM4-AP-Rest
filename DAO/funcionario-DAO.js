@@ -35,7 +35,7 @@ class FuncionarioDAO {
 
     async insertFuncionarios(funcionarios) {
         return await new Promise((resolve, reject) => {
-            const query = ('INSERT INTO funcionarios (nome_completo,email,celular,cargo,bairro,periodo,admissao) VALUES (?,?,?,?,?,?,?)');
+            const query = ('INSERT INTO Funcionarios (nome_completo,email,celular,cargo,bairro,periodo,admissao) VALUES (?,?,?,?,?,?,?)');
             const data = [funcionarios.nome_completo, funcionarios.email, funcionarios.celular, funcionarios.cargo, funcionarios.bairro, funcionarios.periodo, funcionarios.admissao];
             this._db.run(query, data, (err, rows) => {
                     if (err) {

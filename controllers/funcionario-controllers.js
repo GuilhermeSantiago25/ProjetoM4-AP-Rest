@@ -1,5 +1,5 @@
 import FuncionarioDAO from "../DAO/funcionario-DAO.js";
-import FuncionarioModel from "../models/aluno-model.js";
+import FuncionarioModel from "../models/funcionario-model.js";
 import db from "../infra/configDb.js";
 
 
@@ -32,7 +32,6 @@ export async function insertFuncionarios(req, res) {
     const funcionarioDao = new FuncionarioDAO(db);
     const body = req.body;
     const newFuncionario = new FuncionarioModel(body.nome_completo, body.email, body.celular, body.cargo, body.bairro, body.periodo, body.admissao);
-
     const validationResponse = FuncionarioModel.validation(body);
 
     if (!validationResponse) {
