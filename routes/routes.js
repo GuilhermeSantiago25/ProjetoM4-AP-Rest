@@ -2,6 +2,7 @@ import { Router } from 'express';
 import { selectAllAlunos, selectIdAlunos, insertAluno, putAlunos, patchAlunos, deleteAluno } from '../controllers/aluno-controller.js';
 import { selectAllFinanceiro, selectIdFinanceiro, insertFinanceiro, putFinanceiro, patchFinanceiro, deleteFinanceiro } from '../controllers/financeiro-controller.js';
 
+
 const router = Router();
 
 router.get('/', (req,res)=>{
