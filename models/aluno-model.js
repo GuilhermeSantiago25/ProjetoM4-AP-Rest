@@ -16,7 +16,6 @@ class Aluno {
             bairro: {type: 'string', optional: false,max: "100"},
             tipo_habilitacao: {type: 'string', optional: false, max: "50"}
         }
-    
         
         const v = new Validator();
 
@@ -24,5 +23,6 @@ class Aluno {
     }   
     
 }
-
 export default Aluno;
+
+

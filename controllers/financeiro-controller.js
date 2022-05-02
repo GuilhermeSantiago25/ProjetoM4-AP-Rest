@@ -1,11 +1,10 @@
-import AlunoDAO from "../DAO/aluno-DAO.js";
-import AlunoModel from "../models/aluno-model.js";
+import FinanceiroDAO from "../DAO/financeiro-DAO.js";
+import FinanceiroModel from "../models/financeiro-model.js";
 import db from "../infra/configDb.js";
 
-
-export async function selectAllAlunos(req, res) {
-    const alunoDao = new AlunoDAO(db);
-    alunoDao.selectAlunos()
+export async function selectAllFinanceiro(req, res) {
+    const FinanceiroDAO = new FinanceiroDAO(db);
+    FinanceiroDAO.selectFinanceiro()
         .then((result) => {
             res.status(200).json(result);
         })
@@ -14,12 +13,12 @@ export async function selectAllAlunos(req, res) {
         });
 }
 
-export async function selectIdAlunos(req, res) {
-    const alunoDao = new AlunoDAO(db);
+export async function selectIdFinaneiro(req, res) {
+    const FinanceiroDAO = new FinanceiroDAO(db);
     const {
-        id_aluno
+        id_finceiro
     } = req.params;
-    alunoDao.selectAlunosId(id_aluno)
+    FinanceiroDAO.selectIdFinaneiro(idfinceiro)
         .then((result) => {
             res.status(200).json(result);
         })
@@ -28,12 +27,12 @@ export async function selectIdAlunos(req, res) {
         });
 }
 
-export async function insertAluno(req, res) {
-    const alunoDao = new AlunoDAO(db);
+export async function insertFinanceiro(req, res) {
+    const FinanceiroDAO = new FinanceiroDAO(db);
     const body = req.body;
-    const newAluno = new AlunoModel(body.nome_completo, body.email, body.bairro, body.tipo_habilitacao);
+    const newFinanceiro = new FinanceiroModel(body.descricao, body.entrada, body.saida, body.validacao);
 
-    const validationResponse = AlunoModel.validation(body);
+    const validationResponse = FinanceiroModel.validation(body);
 
     if (!validationResponse) {
         return res.status(400).json({
@@ -42,7 +41,7 @@ export async function insertAluno(req, res) {
         });
     }
 
-    alunoDao.insertAlunos(newAluno)
+    financeiroDao.insertFinanceiro(newFinanceiro)
         .then((result) => {
             res.status(201).json(result)
         })
@@ -51,15 +50,15 @@ export async function insertAluno(req, res) {
         });
 }
 
-export async function putAlunos(req, res) {
-    const alunoDao = new AlunoDAO(db);
+export async function putFinanceiro(req, res) {
+    const FinanceiroDAO = new FinanceiroDAO(db);
     const body = req.body;
     const {
-        id_aluno
+        id_financeiro
     } = req.params;
-    const putAluno = new AlunoModel(body.nome_completo, body.email, body.bairro, body.tipo_habilitacao);
+    const putFinanceiro = new FinanceiroModel(body.descricao, body.entrada, body.saida, body.validacao);
 
-    const validationResponse = AlunoModel.validation(body);
+    const validationResponse = FinanceiroModel.validation(body);
 
     if (!validationResponse) {
         return res.status(400).json({
@@ -68,8 +67,8 @@ export async function putAlunos(req, res) {
         });
     }
 
-    alunoDao
-        .updateAlunos(putAluno, id_aluno)
+    financeiroDao
+        .updateFinanceiro(putFinanceiro, id_financeiro)
         .then((result) => {
             res.status(200).json(result)
         })
@@ -78,15 +77,14 @@ export async function putAlunos(req, res) {
         });
 }
 
-export async function patchAlunos(req, res) {
-    const alunoDao = new AlunoDAO(db);
+export async function patchFinanceiro(req, res) {
+    const financeiroDao = new FinanceiroDAO(db);
     const body = req.body;
     const {
-        id_aluno
+        id_financeiro
     } = req.params;
-    const patchAluno = new AlunoModel(body.nome_completo, body.email, body.bairro, body.tipo_habilitacao);
-
-    const validationResponse = AlunoModel.validation(body);
+    const patchFinanceiro = new FinanceiroModel(body.descricao, body.entrada, body.saida, body.validacao);
+    const validationResponse = FinanceiroModel.validation(body);
 
     if (!validationResponse !== true) {
         return res.status(400).json({
@@ -95,8 +93,8 @@ export async function patchAlunos(req, res) {
         });
     }
 
-    alunoDao
-        .updateAlunos(patchAluno, id_aluno)
+    financeiroDao
+        .updateFinanceiro(patchFinanceiro, id_financeiro)
         .then((result) => {
             res.status(200).json(result)
         })
@@ -105,13 +103,13 @@ export async function patchAlunos(req, res) {
         });
 }
 
-export async function deleteAluno(req, res) {
-    const alunoDao = new AlunoDAO(db);
+export async function deleteFinanceiro(req, res) {
+    const financeiroDao = new FinanceiroDAO(db);
     const {
-        id_aluno
+        id_financeiro
     } = req.params;
 
-    alunoDao.deleteAlunos(id_aluno)
+    financeiroDao.deleteFinanceiro(id_financeiro)
         .then((result) => {
             res.status(200).json(result);
         })
