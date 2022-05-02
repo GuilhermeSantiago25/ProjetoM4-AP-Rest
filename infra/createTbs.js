@@ -14,6 +14,7 @@ function criaTabelaAl() {
         if (error) console.log("Erro ao criar tabela de alunos");
     });
 }
+
 const FINANCEIRO_SCHEMA = `CREATE TABLE IF NOT EXISTS Financeiro (
     id_financceiro INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
     descricao VARCHAR(120) NOT NULL,
@@ -22,13 +23,32 @@ const FINANCEIRO_SCHEMA = `CREATE TABLE IF NOT EXISTS Financeiro (
     validacao INTEGER(60) NOT NULL
     );`;
 
-function criaTabelaFin() {
+
+    function criaTabelaFin() {
 db.run(FINANCEIRO_SCHEMA, (error) => {
 if (error) console.log("Erro ao criar tabela do Financeiro");
+});
+}
+
+const FUNCIONARIOS_SCHEMA = `CREATE TABLE IF NOT EXISTS funcionarios (
+    id_funcionario INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    Nomecompleto VARCHAR(120) NOT NULL,
+    Email VARCHAR(80) NOT NULL,
+    Celular INT(15) NOT NULL,
+    Cargo VARCHAR(45) NOT NULL,
+    Bairro VARCHAR(45) NOT NULL,
+    Periodo VARCHAR(45) NOT NULL,
+    Admissão DATE NOT NULL
+    );`;
+
+function criaTabelaFunc() {
+db.run(FUNCIONARIOS_SCHEMA, (error) => {
+if (error) console.log("Erro ao criar tabela de funcionarios");
 });
 }
 
 db.serialize(()=>{
     criaTabelaAl();
     criaTabelaFin();
+    criaTabelaFunc();
 });
