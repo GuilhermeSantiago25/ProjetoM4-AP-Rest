@@ -66,5 +66,5 @@ https://projeto-m4.herokuapp.com/funcionarios/2
 # Colaboradores
 * Guilherme Santiago de Oliveira => https://www.linkedin.com/in/guilherme-santiago-oliveira-04153a238/ , https://github.com/GuilhermeSantiago25
 * André Rodrigues Domingos => https://www.linkedin.com/in/andr%C3%A9-rodrigues-4224b6231/ , https://github.com/ardomingos
-* Willian Firmino =>
+* José william Firmino Bezerra  => https://www.linkedin.com/mwlite/in/william-firmino-87a2ba80 , https://github.com/williamfirmino92
 
