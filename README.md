@@ -8,7 +8,6 @@
  
  Usamos o Node.js para consturir a API e os pacotes utilizados para o desenvovimento foram: Express, Cors, fs, Fastest-validator, HTTPs, sqlite, squlite3.
  
- ##
  
  # Como usar
  
