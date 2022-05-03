@@ -33,7 +33,7 @@ class FinanceiroDAO {
     };
 
 
-    async insertFinanceiro(financeiro) {
+    async insertFinanceiroDAO(financeiro) {
         return await new Promise((resolve, reject) => {
             const query = ('INSERT INTO Financeiro (descricao, entrada, saida, validacao) VALUES (?,?,?,?)');
             const data = [financeiro.descricao, financeiro.entrada, financeiro.saida, financeiro.validacao];
@@ -48,7 +48,7 @@ class FinanceiroDAO {
 
     };
 
-    async updateFinanceiro(financeiro,id_financeiro) {
+    async updateFinanceiroDAO(financeiro,id_financeiro) {
         return await new Promise((resolve, reject) => {
             const query = ('UPDATE Financeiro SET descricao=?, entrada=?, saida=?, validacao=? WHERE id_financeiro=?')
             const data = [financeiro.descricao, financeiro.entrada, financeiro.saida, financeiro.validacao, id_financeiro];
@@ -62,7 +62,7 @@ class FinanceiroDAO {
         });
     }
 
-    async deleteFinanceiro(id_financeiro) {
+    async deleteFinanceiroDAO(id_financeiro) {
        return await new Promise((resolve, reject) => {
             const query = ('DELETE FROM Financeiro WHERE id_financeiro=?');
             const data = [id_financeiro];

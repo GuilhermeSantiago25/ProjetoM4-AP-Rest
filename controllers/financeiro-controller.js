@@ -33,7 +33,7 @@ export async function insertFinanceiro(req, res) {
     const body = req.body;
     const newFinanceiro = new FinanceiroModel(body.descricao, body.entrada, body.saida, body.validacao);
 
-    const validationResponse = FinanceiroModel.validation(body);
+    const validationResponse = FinanceiroModel.validation(newFinanceiro);
 
     if (!validationResponse) {
         return res.status(400).json({
@@ -42,7 +42,7 @@ export async function insertFinanceiro(req, res) {
         });
     }
 
-    financeiroDAO.insertFinanceiro(newFinanceiro)
+    financeiroDAO.insertFinanceiroDAO(newFinanceiro)
         .then((result) => {
             res.status(201).json(result)
         })
@@ -59,7 +59,7 @@ export async function putFinanceiro(req, res) {
     } = req.params;
     const putFinanceiro = new FinanceiroModel(body.descricao, body.entrada, body.saida, body.validacao);
 
-    const validationResponse = FinanceiroModel.validation(body);
+    const validationResponse = FinanceiroModel.validation(putFinanceiro);
     if (!validationResponse) {
         return res.status(400).json({
             message: 'Validation failed',
@@ -68,7 +68,7 @@ export async function putFinanceiro(req, res) {
     }
 
     financeiroDAO
-        .updateFinanceiro(putFinanceiro, id_financeiro)
+        .updateFinanceiroDAO(putFinanceiro, id_financeiro)
         .then((result) => {
             res.status(200).json(result)
         })
@@ -83,7 +83,7 @@ export async function deleteFinanceiro(req, res) {
         id_financeiro
     } = req.params;
 
-    financeiroDao.deleteFinanceiro(id_financeiro)
+    financeiroDao.deleteFinanceiroDAO(id_financeiro)
         .then((result) => {
             res.status(200).json(result);
         })
