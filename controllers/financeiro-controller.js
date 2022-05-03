@@ -77,32 +77,6 @@ export async function putFinanceiro(req, res) {
         });
 }
 
-export async function patchFinanceiro(req, res) {
-    const financeiroDao = new FinanceiroDAO(db);
-    const body = req.body;
-    const {
-        id_financeiro
-    } = req.params;
-    const patchFinanceiro = new FinanceiroModel(body.descricao, body.entrada, body.saida, body.validacao);
-    const validationResponse = FinanceiroModel.validation(body);
-
-    if (!validationResponse !== true) {
-        return res.status(400).json({
-            message: 'Validation failed',
-            errors: validationResponse
-        });
-    }
-
-    financeiroDao
-        .updateFinanceiro(patchFinanceiro, id_financeiro)
-        .then((result) => {
-            res.status(200).json(result)
-        })
-        .catch((error) => {
-            res.status(400).json(error)
-        });
-}
-
 export async function deleteFinanceiro(req, res) {
     const financeiroDao = new FinanceiroDAO(db);
     const {

@@ -77,33 +77,6 @@ export async function putFuncionario(req, res) {
         });
 }
 
-export async function patchFuncionario(req, res) {
-    const funcionarioDao = new FuncionarioDAO(db);
-    const body = req.body;
-    const {
-        id_funcionario
-    } = req.params;
-    const patchFuncionario = new FuncionarioModel(body.nome_completo, body.email, body.bairro, body.tipo_habilitacao);
-
-    const validationResponse = FuncionarioModel.validation(body);
-
-    if (!validationResponse !== true) {
-        return res.status(400).json({
-            message: 'Validation failed',
-            errors: validationResponse
-        });
-    }
-
-    funcionarioDao
-        .updateAlunos(patchFuncionario, id_funcionario)
-        .then((result) => {
-            res.status(200).json(result)
-        })
-        .catch((error) => {
-            res.status(400).json(error)
-        });
-}
-
 export async function deleteFuncionario(req, res) {
     const funcionarioDao = new FuncionarioDAO(db);
     const {
