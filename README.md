@@ -21,4 +21,28 @@
 $npm install
 ```
  
- 
+ # Rotas
+/alunos;
+
+/funcionarios;
+
+/financeiro;
+
+# METODOS 
+ * GET
+ * GET COM ID
+ * POST
+ * PUT
+ * DELETE 
+
+# Exemplos de retorno
+```
+{caminhohttp}/alunos
+	{
+		"id_aluno": 1,
+		"nome_completo": "testeaaaaa",
+		"email": "teste@teste.com",
+		"bairro": "teste",
+		"tipo_habilitacao": "teste"
+	}
+```
