@@ -19,7 +19,7 @@ export async function selectIdFuncionario(req, res) {
     const {
         id_funcionario
     } = req.params;
-    funcionarioDao.selectFuncionarioId(id_funcionario)
+    funcionarioDao.selectFuncionariosId(id_funcionario)
         .then((result) => {
             res.status(200).json(result);
         })
@@ -83,7 +83,7 @@ export async function deleteFuncionario(req, res) {
         id_funcionario
     } = req.params;
 
-    funcionarioDao.deleteFuncionario(id_funcionario)
+    funcionarioDao.deleteFuncionarios(id_funcionario)
         .then((result) => {
             res.status(200).json(result);
         })

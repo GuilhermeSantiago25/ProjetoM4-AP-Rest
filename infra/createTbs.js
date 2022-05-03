@@ -16,7 +16,7 @@ function criaTabelaAl() {
 }
 
 const FINANCEIRO_SCHEMA = `CREATE TABLE IF NOT EXISTS Financeiro (
-    id_financceiro INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    id_financeiro INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
     descricao VARCHAR(120) NOT NULL,
     entrada FLOAT(60) NOT NULL,
     saida FLOAT(60) NOT NULL,

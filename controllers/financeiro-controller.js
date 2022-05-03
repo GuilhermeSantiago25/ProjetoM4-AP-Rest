@@ -16,9 +16,10 @@ export async function selectAllFinanceiro(req, res) {
 export async function selectIdFinaneiro(req, res) {
     const financeiroDAO = new FinanceiroDAO(db);
     const {
-        id_finceiro
+        id_financeiro
     } = req.params;
-    financeiroDAO.selectIdFinaneiro(id_finceiro)
+    console.log(id_financeiro);
+    financeiroDAO.selectFinanceiroId(id_financeiro)
         .then((result) => {
             res.status(200).json(result);
         })
@@ -59,7 +60,6 @@ export async function putFinanceiro(req, res) {
     const putFinanceiro = new FinanceiroModel(body.descricao, body.entrada, body.saida, body.validacao);
 
     const validationResponse = FinanceiroModel.validation(body);
-
     if (!validationResponse) {
         return res.status(400).json({
             message: 'Validation failed',

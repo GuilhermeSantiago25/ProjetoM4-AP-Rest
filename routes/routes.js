@@ -26,10 +26,10 @@ router.put('/funcionarios/:id_funcionario',putFuncionario);
 router.delete('/funcionarios/:id_funcionario', deleteFuncionario);
 
 router.get('/financeiro', selectAllFinanceiro);
-router.get('/financeiro/:id_aluno', selectIdFinaneiro);
+router.get('/financeiro/:id_financeiro', selectIdFinaneiro);
 router.post('/financeiro', insertFinanceiro);
-router.put('/financeiro/:id_aluno',putFinanceiro);
-router.delete('/financeiro/:id_aluno', deleteFinanceiro);
+router.put('/financeiro/:id_financeiro',putFinanceiro);
+router.delete('/financeiro/:id_financeiro', deleteFinanceiro);
 
 export default router;
 

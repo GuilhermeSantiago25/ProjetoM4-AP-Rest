@@ -18,7 +18,7 @@ class FinanceiroDAO {
         });
     }
 
-    async selectidFinanceiro(id_financeiro) {
+    async selectFinanceiroId(id_financeiro) {
         return await new Promise((resolve, reject) => {
             const query = ('SELECT * FROM Financeiro WHERE id_financeiro =?');
             const data = [id_financeiro];
