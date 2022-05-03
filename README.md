@@ -48,5 +48,6 @@ $npm install
 ```
 # Colaboradores
 * Guilherme Santiago de Oliveira => https://www.linkedin.com/in/guilherme-santiago-oliveira-04153a238/ , https://github.com/GuilhermeSantiago25
-* André
+* André Rodrigues =>
+* Willian Firmino =>
 
