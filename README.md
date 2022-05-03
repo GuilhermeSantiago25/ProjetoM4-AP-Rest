@@ -1,10 +1,8 @@
 ﻿# ProjetoM4-API-Rest
- ##
  
  Projeto de conclusão do módulo 4 da Resilia Educação.
  O projeto consiste em uma API nos padrões REST e DAO, visa fazer requisições http e obter as respostas em formato JSON.
  
- ##
  
  # Tecnologias
  
